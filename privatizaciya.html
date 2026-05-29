@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Я-Помогаю.РФ — Приватизация любой недвижимости в России</title>
+  <meta name="description" content="Профессиональная помощь в приватизации квартир, домов, земельных участков, нежилых помещений, дач и гаражей. Работаем по всей России. Закон № 1541-1, ст. 217 ГК РФ." />
+  <meta name="keywords" content="приватизация, приватизация квартиры, приватизация земельного участка, приватизация дачи, приватизация гаража, юрист по приватизации" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              50:  '#f0f7f5',
+              100: '#d9eee9',
+              200: '#b3ddd4',
+              300: '#7fc4b7',
+              400: '#4da595',
+              500: '#2e8a7b',
+              600: '#226f63',
+              700: '#1c5a51',
+              800: '#174843',
+              900: '#0a3d33',
+              950: '#062820',
+            },
+            cream: {
+              50:  '#fdfcf9',
+              100: '#f5f0e8',
+              200: '#ede4d4',
+              300: '#e0d3bb',
+              400: '#ccba9b',
+              500: '#b89e7a',
+            },
+            terra: {
+              50:  '#fdf3f0',
+              100: '#fce4de',
+              200: '#f9c9bc',
+              300: '#f5a490',
+              400: '#e07a5f',
+              500: '#d45f41',
+              600: '#bf4730',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Playfair Display', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --forest-900: #0a3d33;
+      --forest-800: #174843;
+      --cream-100: #f5f0e8;
+      --cream-50: #fdfcf9;
+      --terra-400: #e07a5f;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream-50);
+      color: var(--forest-900);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream-100); }
+    ::-webkit-scrollbar-thumb { background: var(--forest-900); border-radius: 3px; }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(224,122,95,0.4); }
+      70%  { box-shadow: 0 0 0 16px rgba(224,122,95,0); }
+      100% { box-shadow: 0 0 0 0 rgba(224,122,95,0); }
+    }
+
+    .hero-animate { animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both; }
+    .hero-animate-2 { animation: fadeUp 0.9s 0.15s cubic-bezier(0.16,1,0.3,1) both; }
+    .hero-animate-3 { animation: fadeUp 0.9s 0.3s cubic-bezier(0.16,1,0.3,1) both; }
+    .hero-animate-4 { animation: fadeUp 0.9s 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+
+    .float-anim { animation: float 5s ease-in-out infinite; }
+
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Header ── */
+    .header-glass {
+      background: rgba(10,61,51,0.97);
+      backdrop-filter: blur(12px);
+    }
+
+    /* ── Hero ── */
+    .hero-bg {
+      background: linear-gradient(160deg, #0a3d33 0%, #174843 60%, #1c5a51 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(224,122,95,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      background-color: #e07a5f;
+      color: #fdfcf9;
+      transition: background-color 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover {
+      background-color: #d45f41;
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      border: 1.5px solid rgba(245,240,232,0.35);
+      color: #f5f0e8;
+      transition: border-color 0.2s, background-color 0.2s, transform 0.15s;
+    }
+    .btn-outline:hover {
+      border-color: rgba(245,240,232,0.7);
+      background-color: rgba(245,240,232,0.06);
+      transform: translateY(-1px);
+    }
+    .btn-forest {
+      background-color: #0a3d33;
+      color: #f5f0e8;
+      transition: background-color 0.2s, transform 0.15s;
+    }
+    .btn-forest:hover {
+      background-color: #062820;
+      transform: translateY(-1px);
+    }
+
+    /* ── Cards ── */
+    .service-card {
+      background: #fdfcf9;
+      border: 1px solid rgba(10,61,51,0.1);
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover {
+      border-color: rgba(10,61,51,0.25);
+      box-shadow: 0 12px 40px rgba(10,61,51,0.1);
+      transform: translateY(-3px);
+    }
+
+    .step-line::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(10,61,51,0.3), transparent);
+      transform: translateX(-50%);
+    }
+
+    /* ── Accordion ── */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .accordion-content.open {
+      max-height: 500px;
+    }
+    .accordion-icon {
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    .accordion-item.active .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    /* ── Floating CTA ── */
+    .float-cta {
+      position: fixed;
+      right: 20px;
+      bottom: 24px;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .float-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      transition: transform 0.2s;
+    }
+    .float-btn:hover { transform: scale(1.08); }
+    .float-btn.pulse { animation: pulse-ring 2s infinite; }
+
+    /* ── Testimonials ── */
+    .testimonial-card {
+      background: #fdfcf9;
+      border: 1px solid rgba(10,61,51,0.1);
+    }
+
+    /* ── Price ── */
+    .price-card {
+      border: 1.5px solid rgba(10,61,51,0.12);
+      background: #fdfcf9;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .price-card:hover {
+      box-shadow: 0 16px 48px rgba(10,61,51,0.1);
+      transform: translateY(-4px);
+    }
+    .price-card.featured {
+      border-color: #0a3d33;
+      background: #0a3d33;
+      color: #f5f0e8;
+    }
+
+    /* ── Form ── */
+    .form-input {
+      background: rgba(10,61,51,0.04);
+      border: 1.5px solid rgba(10,61,51,0.15);
+      transition: border-color 0.2s, background-color 0.2s;
+      color: #0a3d33;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #0a3d33;
+      background: rgba(10,61,51,0.06);
+    }
+    .form-input::placeholder { color: rgba(10,61,51,0.4); }
+
+    /* ── Section divider ── */
+    .section-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e07a5f;
+      margin-bottom: 12px;
+    }
+
+    /* ── Number accent ── */
+    .num-accent {
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      color: #e07a5f;
+      line-height: 1;
+    }
+
+    /* ── Stripe pattern ── */
+    .stripe-bg {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 6px,
+        rgba(10,61,51,0.03) 6px,
+        rgba(10,61,51,0.03) 12px
+      );
+    }
+
+    @media (max-width: 640px) {
+      .float-cta { right: 14px; bottom: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════ -->
+<header id="top" class="header-glass fixed top-0 left-0 right-0 z-40 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="#top" class="flex items-center gap-2.5">
+      <div class="w-8 h-8 rounded-lg bg-terra-400 flex items-center justify-center flex-shrink-0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fdfcf9" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M9 22V12h6v10" stroke="#fdfcf9" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="font-display font-bold text-cream-100 text-lg leading-tight">Я-Помогаю<span class="text-terra-400">.РФ</span></span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-7 text-sm text-cream-200/80 font-medium">
+      <a href="#services" class="hover:text-cream-100 transition-colors">Услуги</a>
+      <a href="#process" class="hover:text-cream-100 transition-colors">Как работаем</a>
+      <a href="#cases" class="hover:text-cream-100 transition-colors">Кейсы</a>
+      <a href="#prices" class="hover:text-cream-100 transition-colors">Цены</a>
+      <a href="#faq" class="hover:text-cream-100 transition-colors">FAQ</a>
+    </nav>
+
+    <a href="#contact"
+       class="btn-primary inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="hidden sm:inline">Консультация</span>
+    </a>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section class="hero-bg min-h-screen flex items-center pt-16">
+  <div class="hero-noise"></div>
+
+  <!-- Decorative circles -->
+  <div class="absolute top-24 right-8 w-80 h-80 rounded-full bg-terra-400/5 blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-20 left-8 w-96 h-96 rounded-full bg-forest-700/40 blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 w-full py-20 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+      <!-- Left: copy -->
+      <div>
+        <div class="hero-animate">
+          <span class="inline-flex items-center gap-2 bg-white/8 border border-white/12 rounded-full px-4 py-1.5 text-xs text-cream-200 font-medium mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-terra-400 flex-shrink-0"></span>
+            Работаем с 2015 года · Вся Россия
+          </span>
+        </div>
+
+        <h1 class="hero-animate-2 font-display font-bold text-cream-50 text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6">
+          Приватизация<br/>
+          <span class="text-terra-400">любой</span> недвижимости —<br/>
+          лично и по закону
+        </h1>
+
+        <p class="hero-animate-3 text-cream-200/75 text-lg sm:text-xl leading-relaxed mb-8 max-w-lg">
+          Квартира, дом, земля, гараж, дача — оформим в собственность без очередей и отказов.
+          Работаем по Закону № 1541-1 и ст.&nbsp;217 ГК&nbsp;РФ. Результат или возврат денег.
+        </p>
+
+        <div class="hero-animate-4 flex flex-col sm:flex-row gap-3">
+          <a href="#contact"
+             class="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-semibold">
+            Получить консультацию за 5 минут
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#prices"
+             class="btn-outline inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-base font-semibold">
+            Узнать стоимость
+          </a>
+        </div>
+
+        <!-- Trust row -->
+        <div class="hero-animate-4 mt-10 flex flex-wrap gap-6 text-cream-200/60 text-sm">
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Работаем только официально</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Договор с гарантией возврата</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Регистрация в Росреестре под ключ</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: illustration -->
+      <div class="hidden lg:flex items-center justify-center float-anim">
+        <div class="relative w-full max-w-md">
+          <!-- Main illustration: house becoming yours -->
+          <svg viewBox="0 0 480 440" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full">
+            <!-- Background glow -->
+            <ellipse cx="240" cy="320" rx="200" ry="60" fill="rgba(224,122,95,0.06)"/>
+
+            <!-- House body -->
+            <rect x="100" y="220" width="280" height="180" rx="4" fill="#174843"/>
+            <rect x="100" y="220" width="280" height="180" rx="4" stroke="rgba(245,240,232,0.12)" stroke-width="1.5"/>
+
+            <!-- Roof -->
+            <path d="M80 225 L240 90 L400 225Z" fill="#0a3d33" stroke="rgba(245,240,232,0.15)" stroke-width="1.5" stroke-linejoin="round"/>
+
+            <!-- Roof highlight -->
+            <path d="M80 225 L240 90 L400 225" stroke="rgba(224,122,95,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- Windows -->
+            <rect x="130" y="255" width="60" height="55" rx="3" fill="rgba(245,240,232,0.08)" stroke="rgba(245,240,232,0.2)" stroke-width="1.5"/>
+            <line x1="160" y1="255" x2="160" y2="310" stroke="rgba(245,240,232,0.15)" stroke-width="1"/>
+            <line x1="130" y1="282" x2="190" y2="282" stroke="rgba(245,240,232,0.15)" stroke-width="1"/>
+
+            <rect x="290" y="255" width="60" height="55" rx="3" fill="rgba(224,122,95,0.15)" stroke="rgba(224,122,95,0.3)" stroke-width="1.5"/>
+            <line x1="320" y1="255" x2="320" y2="310" stroke="rgba(224,122,95,0.2)" stroke-width="1"/>
+            <line x1="290" y1="282" x2="350" y2="282" stroke="rgba(224,122,95,0.2)" stroke-width="1"/>
+
+            <!-- Window glow (right) -->
+            <ellipse cx="320" cy="282" rx="25" ry="20" fill="rgba(224,122,95,0.08)"/>
+
+            <!-- Door -->
+            <rect x="200" y="315" width="80" height="85" rx="40" fill="#0a3d33" stroke="rgba(245,240,232,0.2)" stroke-width="1.5"/>
+            <circle cx="271" cy="356" r="5" fill="#e07a5f"/>
+
+            <!-- Stairs -->
+            <rect x="195" y="395" width="90" height="8" rx="2" fill="#1c5a51" stroke="rgba(245,240,232,0.1)" stroke-width="1"/>
+            <rect x="185" y="400" width="110" height="5" rx="2" fill="#1c5a51"/>
+
+            <!-- Chimney -->
+            <rect x="300" y="125" width="28" height="60" rx="3" fill="#0a3d33" stroke="rgba(245,240,232,0.12)" stroke-width="1.5"/>
+            <!-- Smoke puffs -->
+            <circle cx="314" cy="108" r="12" fill="rgba(245,240,232,0.05)" stroke="rgba(245,240,232,0.08)" stroke-width="1"/>
+            <circle cx="328" cy="90" r="9" fill="rgba(245,240,232,0.04)" stroke="rgba(245,240,232,0.06)" stroke-width="1"/>
+            <circle cx="308" cy="76" r="7" fill="rgba(245,240,232,0.03)"/>
+
+            <!-- KEY — floating top left -->
+            <g transform="translate(40,80)">
+              <circle cx="30" cy="30" r="30" fill="rgba(224,122,95,0.12)" stroke="rgba(224,122,95,0.3)" stroke-width="1.5"/>
+              <!-- Key icon -->
+              <circle cx="22" cy="26" r="9" stroke="#e07a5f" stroke-width="2" fill="none"/>
+              <path d="M28 30 L52 54" stroke="#e07a5f" stroke-width="2" stroke-linecap="round"/>
+              <path d="M46 50 L46 56" stroke="#e07a5f" stroke-width="2" stroke-linecap="round"/>
+              <path d="M41 53 L41 58" stroke="#e07a5f" stroke-width="2" stroke-linecap="round"/>
+            </g>
+
+            <!-- DOCUMENT card — bottom right -->
+            <g transform="translate(350,270)">
+              <rect width="84" height="96" rx="6" fill="rgba(245,240,232,0.08)" stroke="rgba(245,240,232,0.18)" stroke-width="1.5"/>
+              <rect x="10" y="18" width="40" height="3" rx="1.5" fill="rgba(245,240,232,0.4)"/>
+              <rect x="10" y="28" width="50" height="2.5" rx="1.25" fill="rgba(245,240,232,0.2)"/>
+              <rect x="10" y="36" width="44" height="2.5" rx="1.25" fill="rgba(245,240,232,0.2)"/>
+              <rect x="10" y="44" width="48" height="2.5" rx="1.25" fill="rgba(245,240,232,0.2)"/>
+              <!-- Checkmark seal -->
+              <circle cx="64" cy="72" r="12" fill="rgba(10,61,51,0.6)" stroke="#e07a5f" stroke-width="1.5"/>
+              <path d="M58 72 L63 77 L72 66" stroke="#e07a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+
+            <!-- РОСРЕЕСТР badge — top right -->
+            <g transform="translate(370,50)">
+              <rect width="80" height="32" rx="16" fill="rgba(10,61,51,0.5)" stroke="rgba(224,122,95,0.4)" stroke-width="1.5"/>
+              <text x="40" y="21" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" font-weight="600" fill="#e07a5f" letter-spacing="0.08em">РОСРЕЕСТР</text>
+            </g>
+
+            <!-- Stars decoration -->
+            <circle cx="68" cy="180" r="2.5" fill="rgba(224,122,95,0.5)"/>
+            <circle cx="88" cy="160" r="1.5" fill="rgba(245,240,232,0.3)"/>
+            <circle cx="420" cy="140" r="2" fill="rgba(224,122,95,0.4)"/>
+            <circle cx="440" cy="170" r="1.5" fill="rgba(245,240,232,0.25)"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats row -->
+    <div class="mt-16 pt-10 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 fade-in-section">
+      <div>
+        <div class="num-accent text-5xl sm:text-6xl">9+</div>
+        <div class="text-cream-200/60 text-sm mt-1.5">лет на рынке<br/>приватизации</div>
+      </div>
+      <div>
+        <div class="num-accent text-5xl sm:text-6xl">3 400</div>
+        <div class="text-cream-200/60 text-sm mt-1.5">успешных дел<br/>завершено</div>
+      </div>
+      <div>
+        <div class="num-accent text-5xl sm:text-6xl">98%</div>
+        <div class="text-cream-200/60 text-sm mt-1.5">клиентов получили<br/>право собственности</div>
+      </div>
+      <div>
+        <div class="num-accent text-5xl sm:text-6xl">74</div>
+        <div class="text-cream-200/60 text-sm mt-1.5">региона<br/>России</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     WHY US
+═══════════════════════════════════════════ -->
+<section class="bg-cream-100 py-20 sm:py-28 stripe-bg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-5 gap-10 lg:gap-16 items-center fade-in-section">
+
+      <div class="lg:col-span-2">
+        <span class="section-tag">Почему мы</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-forest-900 leading-tight mb-6">
+          Ваш личный юрист по приватизации — не колл-центр
+        </h2>
+        <p class="text-forest-700 text-base leading-relaxed mb-6">
+          Большинство юридических контор передают вас от специалиста к специалисту. У нас один юрист ведёт ваше дело от первого звонка до записи в ЕГРН.
+        </p>
+        <p class="text-forest-700 text-base leading-relaxed">
+          Мы не оставляем клиентов в отказе. Если администрация отказывает — идём в суд. Если суд осложняется — подключаем апелляцию. Результат закреплён в договоре.
+        </p>
+      </div>
+
+      <div class="lg:col-span-3 grid sm:grid-cols-2 gap-4">
+        <!-- advantage cards — varied layout, no identical grid -->
+        <div class="service-card rounded-2xl p-6 sm:col-span-2 flex gap-5 items-start">
+          <div class="w-12 h-12 rounded-xl bg-forest-900 flex items-center justify-center flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#f5f0e8" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-4" stroke="#e07a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="font-semibold text-forest-900 text-base mb-1">Гарантия по договору</div>
+            <div class="text-forest-600 text-sm leading-relaxed">Фиксируем результат и сроки в договоре. Если не получим право собственности — возвращаем оплату в полном объёме. Никаких «мы старались».</div>
+          </div>
+        </div>
+
+        <div class="service-card rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-terra-400/15 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="#e07a5f" stroke-width="2"/>
+              <path d="M12 6v6l4 2" stroke="#e07a5f" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="font-semibold text-forest-900 text-base mb-1">Сроки — в договоре</div>
+          <div class="text-forest-600 text-sm leading-relaxed">Прописываем конкретные даты, а не «в разумные сроки».</div>
+        </div>
+
+        <div class="service-card rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-forest-900/8 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#0a3d33" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="9" cy="7" r="4" stroke="#0a3d33" stroke-width="2"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#0a3d33" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="font-semibold text-forest-900 text-base mb-1">Один юрист на всё дело</div>
+          <div class="text-forest-600 text-sm leading-relaxed">Не передаём вас по цепочке. Один специалист — от начала до ЕГРН.</div>
+        </div>
+
+        <div class="service-card rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-terra-400/15 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#e07a5f" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="#e07a5f" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="font-semibold text-forest-900 text-base mb-1">Все документы — мы</div>
+          <div class="text-forest-600 text-sm leading-relaxed">Сбор, подача, получение. Вам нужен только паспорт.</div>
+        </div>
+
+        <div class="service-card rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-forest-900/8 flex items-center justify-center mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="3" width="20" height="14" rx="2" stroke="#0a3d33" stroke-width="2"/>
+              <path d="M8 21h8M12 17v4" stroke="#0a3d33" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="font-semibold text-forest-900 text-base mb-1">Дистанционно</div>
+          <div class="text-forest-600 text-sm leading-relaxed">Ведём дела по всей России — онлайн, без поездок в офис.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════ -->
+<section id="services" class="py-20 sm:py-28 bg-cream-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl mb-14 fade-in-section">
+      <span class="section-tag">Виды приватизации</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-forest-900 leading-tight">
+        Любую недвижимость — в вашу собственность
+      </h2>
+    </div>
+
+    <!-- Varied layout: featured + grid -->
+    <div class="grid lg:grid-cols-3 gap-5 fade-in-section">
+
+      <!-- Featured: квартиры -->
+      <div class="service-card rounded-2xl overflow-hidden lg:row-span-2 flex flex-col">
+        <div class="bg-forest-900 p-7 flex-1">
+          <div class="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#f5f0e8" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 22V12h6v10" stroke="#f5f0e8" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-cream-100 text-xl mb-3">Квартиры и комнаты</h3>
+          <p class="text-cream-200/70 text-sm leading-relaxed mb-4">
+            Бесплатная приватизация по Закону № 1541-1 «О приватизации жилищного фонда в РФ». Право однократное для каждого гражданина. Участвуют все зарегистрированные — включая несовершеннолетних (ст. 2 Закона № 1541-1).
+          </p>
+          <ul class="space-y-2 text-sm text-cream-200/65">
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Муниципальное и государственное жильё
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Комнаты в коммунальных квартирах
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Служебное жильё — через суд
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Жильё в аварийных домах — анализ возможности
+            </li>
+          </ul>
+        </div>
+        <div class="p-5 bg-forest-800 mt-auto">
+          <a href="#contact" class="btn-primary w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold">
+            Начать приватизацию
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Земельные участки -->
+      <div class="service-card rounded-2xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-terra-400/12 flex items-center justify-center flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 22V12M5 8l7-6 7 6M2 22h20" stroke="#e07a5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-forest-900 text-base mb-1.5">Земельные участки</h3>
+            <p class="text-forest-600 text-sm leading-relaxed">Приватизация земли под ИЖС, ЛПХ, садоводство. Ст. 39.1 и гл. V.1 Земельного кодекса РФ. Бесплатно — если участок предоставлен до 30.10.2001.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Дома и дачи -->
+      <div class="service-card rounded-2xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-forest-900/8 flex items-center justify-center flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#0a3d33" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="9" y="14" width="6" height="8" stroke="#0a3d33" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M5 9l7-5 7 5" stroke="#0a3d33" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-forest-900 text-base mb-1.5">Дома и дачи</h3>
+            <p class="text-forest-600 text-sm leading-relaxed">«Дачная амнистия» (Закон № 93-ФЗ, продлена до 01.03.2031). Упрощённый порядок для жилых домов, садовых домиков, ОНТ.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Гаражи -->
+      <div class="service-card rounded-2xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-terra-400/12 flex items-center justify-center flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="7" width="20" height="14" rx="2" stroke="#e07a5f" stroke-width="2"/>
+              <path d="M2 11h20M7 15h3M14 15h3" stroke="#e07a5f" stroke-width="2" stroke-linecap="round"/>
+              <path d="M7 7V5a5 5 0 0110 0v2" stroke="#e07a5f" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-forest-900 text-base mb-1.5">Гаражи</h3>
+            <p class="text-forest-600 text-sm leading-relaxed">«Гаражная амнистия» по Закону № 79-ФЗ от 05.04.2021. Бесплатное оформление гаражей и земли под ними до 01.09.2026.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Нежилые помещения -->
+      <div class="service-card rounded-2xl p-6">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-forest-900/8 flex items-center justify-center flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <rect x="2" y="3" width="20" height="18" rx="2" stroke="#0a3d33" stroke-width="2"/>
+              <path d="M9 3v18M2 9h7M2 15h7M15 9h5M15 15h5" stroke="#0a3d33" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-forest-900 text-base mb-1.5">Нежилые помещения</h3>
+            <p class="text-forest-600 text-sm leading-relaxed">Выкуп арендуемого имущества по Закону № 159-ФЗ (преимущественное право МСП). Также — № 178-ФЗ «О приватизации государственного и муниципального имущества».</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Через суд — wide -->
+      <div class="service-card rounded-2xl p-6 lg:col-span-2 bg-forest-900/4 border-forest-900/15">
+        <div class="flex items-start gap-4">
+          <div class="w-11 h-11 rounded-xl bg-forest-900 flex items-center justify-center flex-shrink-0">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M3 6l9 6 9-6M3 18l9-6 9 6" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 3v18" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-forest-900 text-base mb-1.5">Приватизация через суд</h3>
+            <p class="text-forest-600 text-sm leading-relaxed">
+              Когда администрация отказывает — мы идём в суд. Оспариваем отказы по ст. 8 Закона № 1541-1, признаём право собственности в порядке ст. 265–268 ГПК РФ. Ведём апелляцию и кассацию. 87% дел выиграно.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PROCESS
+═══════════════════════════════════════════ -->
+<section id="process" class="py-20 sm:py-28 bg-forest-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl mb-14 fade-in-section">
+      <span class="section-tag">Как мы работаем</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-cream-100 leading-tight">
+        От звонка до выписки ЕГРН — шесть шагов
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 fade-in-section">
+
+      <!-- Step cards -->
+      <div class="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
+        <div class="text-6xl font-display font-bold text-terra-400/20 leading-none mb-2 select-none">01</div>
+        <h3 class="font-semibold text-cream-100 text-base mb-2">Бесплатная консультация</h3>
+        <p class="text-cream-200/55 text-sm leading-relaxed">Анализируем вашу ситуацию. Определяем правовое основание (Закон № 1541-1, ЗК РФ, № 178-ФЗ или иное). Называем стоимость и срок — до копейки.</p>
+        <div class="mt-4 text-xs text-terra-400/70 font-medium">≈ 5 минут</div>
+      </div>
+
+      <div class="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
+        <div class="text-6xl font-display font-bold text-terra-400/20 leading-none mb-2 select-none">02</div>
+        <h3 class="font-semibold text-cream-100 text-base mb-2">Договор с гарантией</h3>
+        <p class="text-cream-200/55 text-sm leading-relaxed">Подписываем договор. Фиксируем результат, сроки и условие возврата денег. Предоплата — 50%, остаток — после внесения в ЕГРН.</p>
+        <div class="mt-4 text-xs text-terra-400/70 font-medium">1 день</div>
+      </div>
+
+      <div class="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
+        <div class="text-6xl font-display font-bold text-terra-400/20 leading-none mb-2 select-none">03</div>
+        <h3 class="font-semibold text-cream-100 text-base mb-2">Сбор документов</h3>
+        <p class="text-cream-200/55 text-sm leading-relaxed">Запрашиваем и получаем все справки, технические планы, ордеры, выписки. Вам нужен только паспорт — остальное наша работа.</p>
+        <div class="mt-4 text-xs text-terra-400/70 font-medium">7–14 дней</div>
+      </div>
+
+      <div class="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
+        <div class="text-6xl font-display font-bold text-terra-400/20 leading-none mb-2 select-none">04</div>
+        <h3 class="font-semibold text-cream-100 text-base mb-2">Подача в администрацию</h3>
+        <p class="text-cream-200/55 text-sm leading-relaxed">Готовим заявление по форме, подаём в орган местного самоуправления или ФГУП/ГУП. Срок рассмотрения по закону — 46 рабочих дней (ст. 8 Закона № 1541-1).</p>
+        <div class="mt-4 text-xs text-terra-400/70 font-medium">До 46 рабочих дней</div>
+      </div>
+
+      <div class="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/8 transition-colors">
+        <div class="text-6xl font-display font-bold text-terra-400/20 leading-none mb-2 select-none">05</div>
+        <h3 class="font-semibold text-cream-100 text-base mb-2">При отказе — суд</h3>
+        <p class="text-cream-200/55 text-sm leading-relaxed">Если администрация отказывает — обжалуем в суде в порядке гл. 22 КАС РФ или ст. 11 ГК РФ. Большинство отказов незаконны. Мы это доказываем.</p>
+        <div class="mt-4 text-xs text-terra-400/70 font-medium">При необходимости</div>
+      </div>
+
+      <div class="relative bg-terra-400/10 border border-terra-400/30 rounded-2xl p-6">
+        <div class="text-6xl font-display font-bold text-terra-400/30 leading-none mb-2 select-none">06</div>
+        <h3 class="font-semibold text-cream-100 text-base mb-2">Регистрация в Росреестре</h3>
+        <p class="text-cream-200/65 text-sm leading-relaxed">Подаём документы в Росреестр. Срок регистрации — 7–9 рабочих дней (Закон № 218-ФЗ). Вы получаете выписку ЕГРН — официальное подтверждение права собственности.</p>
+        <div class="mt-4 text-xs text-terra-400 font-semibold">Финал → Вы — собственник</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     WHAT'S INCLUDED
+═══════════════════════════════════════════ -->
+<section class="py-20 sm:py-28 bg-cream-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-14 items-center fade-in-section">
+
+      <div>
+        <span class="section-tag">Что входит в «под ключ»</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-forest-900 leading-tight mb-6">
+          Один договор — полное сопровождение
+        </h2>
+        <p class="text-forest-600 text-base leading-relaxed">
+          Мы берём на себя всё — от анализа правового основания до финальной записи в ЕГРН. Вам не нужно разбираться в инстанциях и законах.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-3">
+        <!-- service items as rows, not identical cards -->
+        <div class="flex items-start gap-3 p-4 bg-cream-50 rounded-xl border border-forest-900/8">
+          <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#0a3d33"/>
+            <path d="M8 12l3 3 5-5" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-forest-800 text-sm">Правовой анализ основания и рисков</span>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-cream-50 rounded-xl border border-forest-900/8">
+          <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#0a3d33"/>
+            <path d="M8 12l3 3 5-5" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-forest-800 text-sm">Сбор всех справок и технических документов</span>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-cream-50 rounded-xl border border-forest-900/8">
+          <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#0a3d33"/>
+            <path d="M8 12l3 3 5-5" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-forest-800 text-sm">Получение техплана (при необходимости)</span>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-cream-50 rounded-xl border border-forest-900/8">
+          <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#0a3d33"/>
+            <path d="M8 12l3 3 5-5" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-forest-800 text-sm">Подготовка и подача заявления в орган власти</span>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-cream-50 rounded-xl border border-forest-900/8">
+          <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#0a3d33"/>
+            <path d="M8 12l3 3 5-5" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-forest-800 text-sm">Переговоры с администрацией и ведомствами</span>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-cream-50 rounded-xl border border-forest-900/8">
+          <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#0a3d33"/>
+            <path d="M8 12l3 3 5-5" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-forest-800 text-sm">Представительство в суде при отказе</span>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-cream-50 rounded-xl border border-forest-900/8">
+          <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#0a3d33"/>
+            <path d="M8 12l3 3 5-5" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-forest-800 text-sm">Апелляция и кассация (при необходимости)</span>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-cream-50 rounded-xl border border-forest-900/8">
+          <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#0a3d33"/>
+            <path d="M8 12l3 3 5-5" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-forest-800 text-sm">Регистрация права в Росреестре</span>
+        </div>
+        <div class="flex items-start gap-3 p-4 bg-cream-50 rounded-xl border border-forest-900/8 sm:col-span-2">
+          <svg class="mt-0.5 flex-shrink-0" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" fill="#e07a5f"/>
+            <path d="M8 12l3 3 5-5" stroke="#fdfcf9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="text-forest-800 text-sm font-medium">Получение выписки ЕГРН с подтверждением права собственности</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CASES
+═══════════════════════════════════════════ -->
+<section id="cases" class="py-20 sm:py-28 bg-cream-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl mb-14 fade-in-section">
+      <span class="section-tag">Реальные кейсы</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-forest-900 leading-tight">
+        Вот что мы уже решили
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 fade-in-section">
+
+      <div class="service-card rounded-2xl overflow-hidden">
+        <div class="bg-forest-900 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-medium text-cream-200/60 uppercase tracking-wider">Москва · 2024</span>
+            <span class="bg-terra-400/20 text-terra-400 text-xs font-semibold px-2.5 py-1 rounded-full">Квартира</span>
+          </div>
+          <h3 class="font-semibold text-cream-100 text-base">Приватизация через суд: отказ администрации</h3>
+        </div>
+        <div class="p-5">
+          <p class="text-forest-600 text-sm leading-relaxed mb-4">Клиент получил отказ Департамента городского имущества Москвы — «отсутствие основания». Юрист обнаружил ордер 1987 года. Суд признал право собственности по ст. 8 Закона № 1541-1.</p>
+          <div class="flex items-center justify-between text-xs text-forest-500">
+            <span>Срок: 4 месяца</span>
+            <span class="font-semibold text-forest-900">Собственником ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card rounded-2xl overflow-hidden">
+        <div class="bg-forest-800 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-medium text-cream-200/60 uppercase tracking-wider">Краснодар · 2024</span>
+            <span class="bg-terra-400/20 text-terra-400 text-xs font-semibold px-2.5 py-1 rounded-full">Земля</span>
+          </div>
+          <h3 class="font-semibold text-cream-100 text-base">Земля под домом в садовом товариществе</h3>
+        </div>
+        <div class="p-5">
+          <p class="text-forest-600 text-sm leading-relaxed mb-4">Участок выделен в 1993 году, документов нет. Восстановили правоустанавливающие документы, оформили через ст. 39.18 ЗК РФ. Регистрация без суда.</p>
+          <div class="flex items-center justify-between text-xs text-forest-500">
+            <span>Срок: 3 месяца</span>
+            <span class="font-semibold text-forest-900">Собственником ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card rounded-2xl overflow-hidden">
+        <div class="bg-forest-900/80 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-medium text-cream-200/60 uppercase tracking-wider">Екатеринбург · 2023</span>
+            <span class="bg-terra-400/20 text-terra-400 text-xs font-semibold px-2.5 py-1 rounded-full">Гараж</span>
+          </div>
+          <h3 class="font-semibold text-cream-100 text-base">Гаражная амнистия: гараж в кооперативе 1988 г.</h3>
+        </div>
+        <div class="p-5">
+          <p class="text-forest-600 text-sm leading-relaxed mb-4">Гараж в ГСК, кооператив ликвидирован. Собрали документы через Госархив, оформили по Закону № 79-ФЗ «Гаражная амнистия». Земля — бесплатно.</p>
+          <div class="flex items-center justify-between text-xs text-forest-500">
+            <span>Срок: 2 месяца</span>
+            <span class="font-semibold text-forest-900">Собственником ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card rounded-2xl overflow-hidden md:col-span-2 lg:col-span-3">
+        <div class="grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-forest-900/8">
+          <div class="p-5">
+            <div class="text-xs text-forest-500 uppercase tracking-wider mb-1">Нижний Новгород · 2024</div>
+            <div class="font-semibold text-forest-900 text-sm mb-2">Служебная квартира завода</div>
+            <p class="text-forest-600 text-xs leading-relaxed">Завод-наниматель прекратил существование. Признали квартиру утратившей статус служебной (п. 2 ст. 102 ЖК РФ) → приватизация.</p>
+            <div class="mt-3 text-xs font-semibold text-terra-400">5 мес. · Собственником ✓</div>
+          </div>
+          <div class="p-5">
+            <div class="text-xs text-forest-500 uppercase tracking-wider mb-1">Санкт-Петербург · 2023</div>
+            <div class="font-semibold text-forest-900 text-sm mb-2">Коммунальная комната</div>
+            <p class="text-forest-600 text-xs leading-relaxed">Один из соседей отказывался согласовывать. Доказали, что согласие остальных нанимателей не требуется по ст. 2 Закона № 1541-1.</p>
+            <div class="mt-3 text-xs font-semibold text-terra-400">6 нед. · Собственником ✓</div>
+          </div>
+          <div class="p-5">
+            <div class="text-xs text-forest-500 uppercase tracking-wider mb-1">Новосибирск · 2024</div>
+            <div class="font-semibold text-forest-900 text-sm mb-2">Нежилое под малый бизнес</div>
+            <p class="text-forest-600 text-xs leading-relaxed">Арендатор — ИП 8 лет. Воспользовались преимущественным правом выкупа по Закону № 159-ФЗ. Цена — 62% от кадастровой.</p>
+            <div class="mt-3 text-xs font-semibold text-terra-400">4 мес. · Собственником ✓</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     PRICES
+═══════════════════════════════════════════ -->
+<section id="prices" class="py-20 sm:py-28 bg-cream-100 stripe-bg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl mb-14 fade-in-section">
+      <span class="section-tag">Стоимость</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-forest-900 leading-tight">
+        Прозрачные цены, фиксированные в договоре
+      </h2>
+      <p class="text-forest-600 mt-4 text-base">Никаких «от…» и скрытых доплат. Цена указана за полное сопровождение «под ключ».</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 fade-in-section">
+
+      <!-- Эконом -->
+      <div class="price-card rounded-2xl p-6">
+        <div class="text-xs font-semibold text-forest-500 uppercase tracking-wider mb-4">Эконом</div>
+        <div class="mb-4">
+          <span class="font-display font-bold text-4xl text-forest-900">15 000</span>
+          <span class="text-forest-500 text-sm ml-1">₽</span>
+        </div>
+        <div class="text-forest-600 text-sm mb-5">Консультация + сбор документов + подача заявления. Для несложных случаев.</div>
+        <ul class="space-y-2 text-sm text-forest-700 mb-6">
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0a3d33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Анализ документов</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0a3d33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Подготовка заявления</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0a3d33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Подача в администрацию</li>
+          <li class="flex items-center gap-2 text-forest-400"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Суд не включён</li>
+        </ul>
+        <a href="#contact" class="btn-forest w-full inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold">Выбрать</a>
+      </div>
+
+      <!-- Стандарт -->
+      <div class="price-card featured rounded-2xl p-6 relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-terra-400 text-cream-50 text-xs font-bold px-3 py-1.5 rounded-bl-xl">Популярный</div>
+        <div class="text-xs font-semibold text-cream-200/60 uppercase tracking-wider mb-4">Стандарт</div>
+        <div class="mb-4">
+          <span class="font-display font-bold text-4xl text-cream-100">30 000</span>
+          <span class="text-cream-200/60 text-sm ml-1">₽</span>
+        </div>
+        <div class="text-cream-200/70 text-sm mb-5">Полное сопровождение «под ключ» — от анализа до ЕГРН.</div>
+        <ul class="space-y-2 text-sm text-cream-200/80 mb-6">
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Всё из «Эконом»</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Сбор всех документов</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Регистрация в Росреестре</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Гарантия результата</li>
+        </ul>
+        <a href="#contact" class="btn-primary w-full inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold">Выбрать</a>
+      </div>
+
+      <!-- VIP -->
+      <div class="price-card rounded-2xl p-6">
+        <div class="text-xs font-semibold text-forest-500 uppercase tracking-wider mb-4">VIP</div>
+        <div class="mb-4">
+          <span class="font-display font-bold text-4xl text-forest-900">60 000</span>
+          <span class="text-forest-500 text-sm ml-1">₽</span>
+        </div>
+        <div class="text-forest-600 text-sm mb-5">Приоритетное ведение. Суд включён. Для сложных и нестандартных случаев.</div>
+        <ul class="space-y-2 text-sm text-forest-700 mb-6">
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0a3d33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Всё из «Стандарт»</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0a3d33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Ведение суда 1-й инстанции</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0a3d33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Апелляция включена</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#0a3d33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Персональный юрист 24/7</li>
+        </ul>
+        <a href="#contact" class="btn-forest w-full inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold">Выбрать</a>
+      </div>
+
+      <!-- Оплата по результату -->
+      <div class="price-card rounded-2xl p-6 border-dashed border-terra-400/40 bg-terra-400/4">
+        <div class="text-xs font-semibold text-terra-500 uppercase tracking-wider mb-4">По результату</div>
+        <div class="mb-4">
+          <span class="font-display font-bold text-4xl text-forest-900">0 ₽</span>
+          <span class="text-forest-500 text-sm ml-1">сейчас</span>
+        </div>
+        <div class="text-forest-600 text-sm mb-5">Платите только после получения выписки ЕГРН. Подходит для стандартных случаев — по согласованию.</div>
+        <ul class="space-y-2 text-sm text-forest-700 mb-6">
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Оплата после результата</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Договор с гарантией</li>
+          <li class="flex items-center gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#e07a5f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> По согласованию</li>
+        </ul>
+        <a href="#contact" class="w-full inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold border-2 border-terra-400 text-terra-500 hover:bg-terra-400 hover:text-cream-50 transition-colors">Уточнить условия</a>
+      </div>
+
+    </div>
+
+    <p class="mt-6 text-xs text-forest-500 text-center fade-in-section">
+      Цены без НДС. Госпошлины и нотариальные расходы оплачиваются отдельно. Точная стоимость — по итогам бесплатной консультации.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════ -->
+<section class="py-20 sm:py-28 bg-cream-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl mb-14 fade-in-section">
+      <span class="section-tag">Отзывы</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-forest-900 leading-tight">
+        Говорят наши клиенты
+      </h2>
+    </div>
+
+    <!-- Masonry-style layout via columns -->
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-5 fade-in-section [column-fill:balance]">
+
+      <div class="testimonial-card rounded-2xl p-6 mb-5 break-inside-avoid">
+        <div class="flex gap-1 mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-forest-700 text-sm leading-relaxed mb-4">Три года не могла приватизировать бабушкину квартиру — администрация отказывала. Взялись, нашли ордер в архиве, выиграли суд. Теперь я собственник. Спасибо огромное.</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-forest-900/10 flex items-center justify-center text-forest-800 font-semibold text-sm">ТМ</div>
+          <div>
+            <div class="font-semibold text-forest-900 text-sm">Татьяна М.</div>
+            <div class="text-forest-500 text-xs">Москва</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rounded-2xl p-6 mb-5 break-inside-avoid">
+        <div class="flex gap-1 mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-forest-700 text-sm leading-relaxed mb-4">Оформляли земельный участок по гаражной амнистии. Юрист объяснил всё чётко и понятно, без лишних слов. Документы собрали за две недели, зарегистрировали без нареканий.</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-forest-900/10 flex items-center justify-center text-forest-800 font-semibold text-sm">АК</div>
+          <div>
+            <div class="font-semibold text-forest-900 text-sm">Алексей К.</div>
+            <div class="text-forest-500 text-xs">Екатеринбург</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rounded-2xl p-6 mb-5 break-inside-avoid">
+        <div class="flex gap-1 mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-forest-700 text-sm leading-relaxed mb-4">Арендовал помещение под магазин 9 лет. Помогли оформить преимущественное право выкупа по 159-ФЗ. Выкупили по кадастровой, а не по рыночной. Сэкономили, наверное, 4 миллиона.</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-forest-900/10 flex items-center justify-center text-forest-800 font-semibold text-sm">ИГ</div>
+          <div>
+            <div class="font-semibold text-forest-900 text-sm">Игорь Г.</div>
+            <div class="text-forest-500 text-xs">Новосибирск · ИП</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rounded-2xl p-6 mb-5 break-inside-avoid">
+        <div class="flex gap-1 mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-forest-700 text-sm leading-relaxed mb-4">Была ужасная ситуация: дача оформлена на деда, дед умер, документов нет. Думала, что потеряли участок навсегда. Восстановили всё через суд и архивы. Участок теперь в ЕГРН на мне.</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-forest-900/10 flex items-center justify-center text-forest-800 font-semibold text-sm">НЛ</div>
+          <div>
+            <div class="font-semibold text-forest-900 text-sm">Наталья Л.</div>
+            <div class="text-forest-500 text-xs">Краснодарский край</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rounded-2xl p-6 mb-5 break-inside-avoid">
+        <div class="flex gap-1 mb-3">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#D4AF37"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="text-forest-700 text-sm leading-relaxed mb-4">Обращался с простым вопросом по квартире — всё сделали быстро и без лишней суеты. Главное — один юрист вёл всё от начала до конца, не нужно было каждый раз объяснять ситуацию заново.</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-forest-900/10 flex items-center justify-center text-forest-800 font-semibold text-sm">СВ</div>
+          <div>
+            <div class="font-semibold text-forest-900 text-sm">Сергей В.</div>
+            <div class="text-forest-500 text-xs">Санкт-Петербург</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════ -->
+<section id="faq" class="py-20 sm:py-28 bg-forest-900">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="mb-14 fade-in-section">
+      <span class="section-tag">Часто спрашивают</span>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-cream-100 leading-tight">
+        Ответы на главные вопросы
+      </h2>
+    </div>
+
+    <div class="space-y-2 fade-in-section" id="accordion">
+
+      <div class="accordion-item rounded-xl border border-white/10 overflow-hidden">
+        <button class="accordion-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="font-medium text-cream-100 text-sm sm:text-base pr-4">Кто имеет право на бесплатную приватизацию жилья?</span>
+          <svg class="accordion-icon flex-shrink-0 text-terra-400" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="px-5 pb-5 text-cream-200/65 text-sm leading-relaxed">
+            По ст. 2 Закона № 1541-1 право имеют граждане РФ, занимающие жилые помещения государственного и муниципального жилого фонда на основании договора социального найма. Важно: право приватизации однократное, но несовершеннолетние, участвовавшие в приватизации до 18 лет, сохраняют право повторно использовать его после совершеннолетия (ст. 11 Закона № 1541-1). Все зарегистрированные совершеннолетние члены семьи должны дать согласие или нотариальный отказ.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item rounded-xl border border-white/10 overflow-hidden">
+        <button class="accordion-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="font-medium text-cream-100 text-sm sm:text-base pr-4">Когда приватизация невозможна?</span>
+          <svg class="accordion-icon flex-shrink-0 text-terra-400" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="px-5 pb-5 text-cream-200/65 text-sm leading-relaxed">
+            Согласно ст. 4 Закона № 1541-1 не подлежат приватизации: жилые помещения в аварийном состоянии, в общежитиях, в закрытых военных городках, а также служебные жилые помещения (за исключением жилищного фонда совхозов и других сельскохозяйственных предприятий). Однако статус служебного жилья можно оспорить в суде — если наниматель проработал на предприятии более 10 лет или предприятие прекратило деятельность.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item rounded-xl border border-white/10 overflow-hidden">
+        <button class="accordion-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="font-medium text-cream-100 text-sm sm:text-base pr-4">Сколько времени занимает приватизация?</span>
+          <svg class="accordion-icon flex-shrink-0 text-terra-400" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="px-5 pb-5 text-cream-200/65 text-sm leading-relaxed">
+            Администрация обязана рассмотреть заявление в течение 46 рабочих дней (ст. 8 Закона № 1541-1). После подписания договора передачи — регистрация в Росреестре занимает 7–9 рабочих дней. Итого в стандартном случае: 2,5–3,5 месяца от подачи документов. При судебном оспаривании — 4–7 месяцев.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item rounded-xl border border-white/10 overflow-hidden">
+        <button class="accordion-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="font-medium text-cream-100 text-sm sm:text-base pr-4">Какие риски возникают после приватизации?</span>
+          <svg class="accordion-icon flex-shrink-0 text-terra-400" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="px-5 pb-5 text-cream-200/65 text-sm leading-relaxed">
+            После приватизации собственник обязан платить налог на имущество (ст. 399–409 НК РФ) и взносы на капитальный ремонт (ст. 169 ЖК РФ). При продаже в первые 5 лет — НДФЛ 13% с дохода (ст. 217.1 НК РФ; но если жильё единственное — 3 года). Также утрачивается право на деприватизацию, если ранее использовалось. Мы заранее предупреждаем об этих последствиях и помогаем оценить налоговые риски.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item rounded-xl border border-white/10 overflow-hidden">
+        <button class="accordion-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="font-medium text-cream-100 text-sm sm:text-base pr-4">Как приватизировать земельный участок?</span>
+          <svg class="accordion-icon flex-shrink-0 text-terra-400" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="px-5 pb-5 text-cream-200/65 text-sm leading-relaxed">
+            Земельные участки приватизируются по нормам гл. V.1 ЗК РФ (ст. 39.1–39.20). Если участок был предоставлен до 30.10.2001 для ИЖС, ЛПХ, садоводства или огородничества — он оформляется бесплатно в порядке ст. 39.18 ЗК РФ. Главный документ — любой правоустанавливающий акт: решение исполкома, постановление главы администрации, выписка из похозяйственной книги.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item rounded-xl border border-white/10 overflow-hidden">
+        <button class="accordion-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="font-medium text-cream-100 text-sm sm:text-base pr-4">Что такое «гаражная амнистия» и когда она закончится?</span>
+          <svg class="accordion-icon flex-shrink-0 text-terra-400" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="px-5 pb-5 text-cream-200/65 text-sm leading-relaxed">
+            Закон № 79-ФЗ от 05.04.2021 («Гаражная амнистия») позволяет бесплатно оформить в собственность гаражи, построенные до 30.12.2004, и землю под ними. Условие — гараж является объектом капитального строительства, стоит в ГСК или на земле государственной/муниципальной собственности. Амнистия действует до 01.09.2026. Если у вас подходящий гараж — не откладывайте.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item rounded-xl border border-white/10 overflow-hidden">
+        <button class="accordion-trigger w-full flex items-center justify-between p-5 text-left">
+          <span class="font-medium text-cream-100 text-sm sm:text-base pr-4">Работаете ли вы с регионами?</span>
+          <svg class="accordion-icon flex-shrink-0 text-terra-400" width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="accordion-content">
+          <div class="px-5 pb-5 text-cream-200/65 text-sm leading-relaxed">
+            Да. Мы ведём дела по всей России — в 74 регионах. Взаимодействие с местными администрациями, судами и Росреестром производится дистанционно или через аффилированных партнёров. Консультация, подготовка документов и сопровождение — полностью онлайн.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     CONTACT / CTA
+═══════════════════════════════════════════ -->
+<section id="contact" class="py-20 sm:py-28 bg-cream-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-14 items-start fade-in-section">
+
+      <div>
+        <span class="section-tag">Связаться</span>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl text-forest-900 leading-tight mb-5">
+          Начните с бесплатной консультации
+        </h2>
+        <p class="text-forest-600 text-base leading-relaxed mb-8">
+          Расскажите о ситуации — юрист ответит в течение 15 минут в рабочее время. Если ситуация сложная — сразу скажем честно, что возможно, а что нет.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <a href="tel:+78001234567" class="flex items-center gap-4 p-4 bg-cream-50 rounded-xl border border-forest-900/8 hover:border-forest-900/20 transition-colors group">
+            <div class="w-11 h-11 rounded-xl bg-forest-900 flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#f5f0e8" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-forest-500 mb-0.5">Телефон</div>
+              <div class="font-semibold text-forest-900 group-hover:text-terra-500 transition-colors">8 800 123-45-67</div>
+              <div class="text-xs text-forest-500">Бесплатно по России</div>
+            </div>
+          </a>
+
+          <a href="https://t.me/yapomogayu" class="flex items-center gap-4 p-4 bg-cream-50 rounded-xl border border-forest-900/8 hover:border-forest-900/20 transition-colors group">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#229ED9">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M21 5L2 12.5l7 1M21 5l-5 15-7-6.5M21 5L9 13.5m0 0V19l3.5-3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-forest-500 mb-0.5">Telegram</div>
+              <div class="font-semibold text-forest-900 group-hover:text-terra-500 transition-colors">@yapomogayu</div>
+              <div class="text-xs text-forest-500">Ответим в 15 минут</div>
+            </div>
+          </a>
+
+          <a href="https://wa.me/79001234567" class="flex items-center gap-4 p-4 bg-cream-50 rounded-xl border border-forest-900/8 hover:border-forest-900/20 transition-colors group">
+            <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#25D366">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-forest-500 mb-0.5">WhatsApp</div>
+              <div class="font-semibold text-forest-900 group-hover:text-terra-500 transition-colors">+7 (900) 123-45-67</div>
+              <div class="text-xs text-forest-500">Напишите прямо сейчас</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-3 text-sm text-forest-500">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Пн–Пт 9:00–19:00, Сб 10:00–16:00 МСК
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="bg-cream-50 rounded-2xl p-7 border border-forest-900/8 shadow-sm">
+        <h3 class="font-semibold text-forest-900 text-lg mb-6">Оставить заявку</h3>
+        <form onsubmit="handleForm(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-medium text-forest-700 mb-1.5">Ваше имя</label>
+            <input type="text" placeholder="Иван Петрович" class="form-input w-full px-4 py-3 rounded-xl text-sm" required />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-forest-700 mb-1.5">Телефон или Telegram</label>
+            <input type="text" placeholder="+7 (___) ___-__-__" class="form-input w-full px-4 py-3 rounded-xl text-sm" required />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-forest-700 mb-1.5">Что нужно приватизировать?</label>
+            <select class="form-input w-full px-4 py-3 rounded-xl text-sm">
+              <option value="">Выберите тип недвижимости</option>
+              <option>Квартира / комната</option>
+              <option>Частный дом / дача</option>
+              <option>Земельный участок</option>
+              <option>Гараж</option>
+              <option>Нежилое помещение</option>
+              <option>Другое / не знаю</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-forest-700 mb-1.5">Регион</label>
+            <input type="text" placeholder="Например: Москва" class="form-input w-full px-4 py-3 rounded-xl text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-forest-700 mb-1.5">Кратко о ситуации (необязательно)</label>
+            <textarea placeholder="Что уже делали, есть ли документы, отказы..." rows="3" class="form-input w-full px-4 py-3 rounded-xl text-sm resize-none"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold">
+            Отправить заявку
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <p class="text-xs text-forest-500 text-center">
+            Нажимая «Отправить», вы соглашаетесь с
+            <a href="#privacy" class="underline hover:text-forest-700">политикой конфиденциальности</a>
+          </p>
+        </form>
+        <div id="form-success" class="hidden text-center py-8">
+          <div class="w-14 h-14 rounded-full bg-forest-900/8 flex items-center justify-center mx-auto mb-4">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M20 6L9 17l-5-5" stroke="#0a3d33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="font-semibold text-forest-900 text-base mb-2">Заявка отправлена</div>
+          <div class="text-forest-500 text-sm">Юрист свяжется с вами в течение 15 минут</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer class="bg-forest-950 text-cream-200/50 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-terra-400 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fdfcf9" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M9 22V12h6v10" stroke="#fdfcf9" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="font-display font-bold text-cream-100 text-base">Я-Помогаю<span class="text-terra-400">.РФ</span></span>
+        </div>
+        <p class="text-sm leading-relaxed mb-4">Сервис № 1 по приватизации недвижимости в России. Работаем с 2015 года.</p>
+        <p class="text-xs">© 2015–2025 Я-Помогаю.РФ<br/>Все права защищены</p>
+      </div>
+
+      <div>
+        <div class="text-cream-100 text-sm font-semibold mb-4">Услуги</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#services" class="hover:text-cream-200 transition-colors">Приватизация квартиры</a></li>
+          <li><a href="#services" class="hover:text-cream-200 transition-colors">Земельные участки</a></li>
+          <li><a href="#services" class="hover:text-cream-200 transition-colors">Дома и дачи</a></li>
+          <li><a href="#services" class="hover:text-cream-200 transition-colors">Гаражи (амнистия)</a></li>
+          <li><a href="#services" class="hover:text-cream-200 transition-colors">Нежилые помещения</a></li>
+          <li><a href="#services" class="hover:text-cream-200 transition-colors">Приватизация через суд</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-cream-100 text-sm font-semibold mb-4">Компания</div>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#process" class="hover:text-cream-200 transition-colors">Как работаем</a></li>
+          <li><a href="#cases" class="hover:text-cream-200 transition-colors">Кейсы</a></li>
+          <li><a href="#prices" class="hover:text-cream-200 transition-colors">Цены</a></li>
+          <li><a href="#faq" class="hover:text-cream-200 transition-colors">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-cream-100 text-sm font-semibold mb-4">Контакты</div>
+        <ul class="space-y-3 text-sm">
+          <li><a href="tel:+78001234567" class="hover:text-cream-200 transition-colors">8 800 123-45-67</a><br/><span class="text-xs">Бесплатно по России</span></li>
+          <li><a href="https://t.me/yapomogayu" class="hover:text-cream-200 transition-colors">Telegram: @yapomogayu</a></li>
+          <li><a href="https://wa.me/79001234567" class="hover:text-cream-200 transition-colors">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-white/8">
+      <!-- Legal documents -->
+      <div id="privacy" class="mb-6">
+        <details class="group">
+          <summary class="text-xs text-terra-400/70 cursor-pointer hover:text-terra-400 transition-colors font-medium select-none list-none flex items-center gap-2">
+            <svg class="transition-transform group-open:rotate-90" width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Политика конфиденциальности
+          </summary>
+          <div class="mt-4 text-xs leading-relaxed text-cream-200/40 max-w-3xl">
+            <p class="mb-2"><strong class="text-cream-200/60">Политика конфиденциальности</strong> — ИП/ООО «Я-Помогаю.РФ»</p>
+            <p class="mb-2">Мы собираем персональные данные (имя, контактный телефон, адрес электронной почты) исключительно в целях оказания юридических услуг и не передаём их третьим лицам без вашего согласия, за исключением случаев, предусмотренных законодательством РФ. Обработка данных осуществляется в соответствии с Федеральным законом № 152-ФЗ «О персональных данных». Данные хранятся на защищённых серверах и удаляются по вашему запросу в течение 30 дней.</p>
+          </div>
+        </details>
+
+        <details class="group mt-3">
+          <summary class="text-xs text-terra-400/70 cursor-pointer hover:text-terra-400 transition-colors font-medium select-none list-none flex items-center gap-2">
+            <svg class="transition-transform group-open:rotate-90" width="12" height="12" viewBox="0 0 24 24" fill="none">
+              <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Публичная оферта
+          </summary>
+          <div class="mt-4 text-xs leading-relaxed text-cream-200/40 max-w-3xl">
+            <p class="mb-2"><strong class="text-cream-200/60">Публичная оферта об оказании юридических услуг</strong></p>
+            <p class="mb-2">Настоящая публичная оферта является предложением заключить договор на условиях, изложенных на сайте. Акцептом является оплата услуг или подписание договора. Исполнитель гарантирует результат в соответствии с условиями договора. При невозможности достижения результата по не зависящим от исполнителя причинам оплата возвращается пропорционально объёму выполненных работ. Споры разрешаются в судебном порядке по месту нахождения исполнителя.</p>
+          </div>
+        </details>
+      </div>
+
+      <p class="text-xs text-cream-200/30 leading-relaxed max-w-4xl">
+        Информация на сайте носит ознакомительный характер и не является юридической консультацией в смысле ст. 779 ГК РФ. Каждая ситуация уникальна — для получения точного ответа обратитесь к нашим специалистам. Работаем в рамках Закона № 1541-1 от 04.07.1991, ЗК РФ, Закона № 178-ФЗ от 21.12.2001, Закона № 159-ФЗ от 22.07.2008, Закона № 79-ФЗ от 05.04.2021.
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════
+     FLOATING BUTTONS
+═══════════════════════════════════════════ -->
+<div class="float-cta">
+  <a href="https://wa.me/79001234567" aria-label="WhatsApp"
+     class="float-btn pulse"
+     style="background:#25D366">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <a href="https://t.me/yapomogayu" aria-label="Telegram"
+     class="float-btn"
+     style="background:#229ED9">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+      <path d="M21 5L2 12.5l7 1M21 5l-5 15-7-6.5M21 5L9 13.5m0 0V19l3.5-3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════ -->
+<script>
+  // ── Scroll-triggered fade-in ──
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+
+  // ── Accordion ──
+  document.querySelectorAll('.accordion-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.accordion-item');
+      const content = item.querySelector('.accordion-content');
+      const isOpen = item.classList.contains('active');
+
+      // Close all
+      document.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.accordion-content').classList.remove('open');
+      });
+
+      // Open clicked if was closed
+      if (!isOpen) {
+        item.classList.add('active');
+        content.classList.add('open');
+      }
+    });
+  });
+
+  // ── Form submit ──
+  function handleForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    const success = document.getElementById('form-success');
+    form.style.opacity = '0';
+    form.style.transition = 'opacity 0.3s';
+    setTimeout(() => {
+      form.style.display = 'none';
+      success.classList.remove('hidden');
+      success.style.animation = 'fadeIn 0.5s ease both';
+    }, 300);
+  }
+
+  // ── Sticky header background on scroll ──
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      header.style.boxShadow = '0 4px 24px rgba(0,0,0,0.18)';
+    } else {
+      header.style.boxShadow = 'none';
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
